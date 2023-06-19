@@ -1,13 +1,22 @@
 package com.example;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.ws.rs.ApplicationPath;
+import javax.ws.rs.core.Application;
+
+import com.example.resources.TodoResource;
+
+@ApplicationPath("/api")
+public class App extends Application {
+    @Override
+    public Set<Class<?>> getClasses() {
+        Set<Class<?>> classes = new HashSet<>();
+
+        // Register resources...
+        classes.add(TodoResource.class);
+
+        return classes;
     }
 }
